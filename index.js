@@ -8,7 +8,8 @@ let text = `# 포스팅으로 1일 1잔디+a
 
 const parser = new Parser({
     headers: {
-        Accept: 'application/rss+xml, application/xml, text/xml; q=0.1',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',
+        'Accept': 'application/rss+xml, application/xml;q=0.9, */*;q=0.8',
     }});
 
 (async () => {
@@ -16,7 +17,8 @@ const parser = new Parser({
 
     text += `<ul>`;
 
-    for (let i = 0; i < 10; i++) {
+    const maxPosts = Math.min(feed.items.length, 10);
+    for (let i = 0; i < maxPosts; i++) {
         const {title, link} = feed.items[i];
         text += `<li><a href='${link}' target='_blank'>${title}</a></li>`;
     }
