@@ -13,7 +13,7 @@ const parser = new Parser({
     }});
 
 (async () => {
-    const feed = await parser.parseURL('https://today-i-played.tistory.com/');
+    const feed = await parser.parseURL('https://today-i-played.tistory.com/rss');
 
     text += `<ul>`;
 
