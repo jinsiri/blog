@@ -40,5 +40,9 @@ jobs:
           git config --local user.email "developer_corn@daum.net"
           git config --local user.name "jinsiri"
           git add .
-          git commit -m "Update: README.md"
-          git push origin main
+          if ! git diff --cached --exit-code; then
+                      git commit -m "Update: README.md"
+                      git push origin main
+                    else
+                      echo "변경사항이 없어 커밋을 건너뜁니다."
+                    fi

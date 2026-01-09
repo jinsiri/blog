@@ -25,8 +25,10 @@ const parser = new Parser({
 
     text += `</ul>`;
 
-    writeFileSync('README.md', text, 'utf8', (e) => {
-        console.log(e);
-    })
-    console.log('완료');
+    try {
+        writeFileSync('README.md', text, 'utf8');
+        console.log('완료');
+    } catch (error) {
+        console.error('파일 쓰기 실패:', error);
+    }
 })();
